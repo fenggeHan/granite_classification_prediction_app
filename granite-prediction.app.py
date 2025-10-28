@@ -84,11 +84,11 @@ if uploaded_file is not None:
         st.write("合并后的数据预览：")
         st.write(result_df.head())  # 显示前几行合并后的数据
 
-        # 下载结果（包括原始数据和预测结果）
-        output_csv = result_df.to_csv(index=False, encoding="utf-8-sig").encode("utf-8")  # 使用 utf-8-sig 编码
+        # 下载结果（直接内存，不写文件）
+        output_csv = result_df.to_csv(index=False).encode("utf-8")  # 使用 utf-8 编码
         st.download_button(
             label="Download prediction results",
-            data=output_csv,
+            data=output_csv,  # 直接内存下载
             file_name="prediction_results_with_data.csv",  # 文件名
             mime="text/csv"  # 文件类型
         )
