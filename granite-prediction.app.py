@@ -64,12 +64,8 @@ st.write(f"测试准确度: {test_accuracy:.4f}")
 
 # 如果上传了文件
 if uploaded_file is not None:
-    # 读取上传的CSV文件
-    user_data = pd.read_csv(uploaded_file)
-    
-    # 确保用户上传的数据第一行是列名，并且数据格式正确
-    st.write("用户上传的数据预览：")
-    st.write(user_data.head())  # 显示前几行数据
+    # 读取上传的CSV文件，并确保正确读取数据（第一行是列名）
+    user_data = pd.read_csv(uploaded_file, header=0)  # 强制读取第一行作为列名
 
     # 检查上传的数据列数是否匹配
     if user_data.shape[1] == features.shape[1]:
