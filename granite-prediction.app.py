@@ -12,18 +12,14 @@ st.title("Granite Prediction App")
 # 加载训练数据
 @st.cache_resource
 def load_data():
-    # 使用 GitHub 原始链接，并设定第一行作为数据而非列名
-    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/1240shiyan.csv', header=None)
-    
-    # 手动设置列名
-    columns = ['SiO2', 'TiO2', 'Al2O3', 'FeOt', 'MnO', 'MgO', 'CaO', 'Na2O', 'K2O', 'P2O5', 'Rb', 'Ba', 'Nb', 'Sr', 'Zr', 'Ba/Zr', 'Nb/Zr', 'Label']
-    data.columns = columns
+    # 读取数据，并确保第一行作为列名
+    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/1240shiyan.csv', header=0)
     return data
 
 data = load_data()
 
 # 提取特征和标签
-features = data.iloc[:1240, :17]  # 特征: 前17列
+features = data.iloc[:1240, :-1]  # 特征: 所有列，去掉最后一列标签列
 labels = data.iloc[:1240, -1]  # 标签: 最后一列
 
 # 每次用户访问时重新训练模型
@@ -58,13 +54,10 @@ st.markdown("如果你没有数据模板，请下载 [Data Template-granite.csv]
 
 if uploaded_file is not None:
     # 读取上传的CSV文件
-    user_data = pd.read_csv(uploaded_file, header=None)
-
-    # 手动设置上传数据的列名
-    user_data.columns = columns[:-1]  # 不包括标签列
+    user_data = pd.read_csv(uploaded_file, header=0)
 
     # 确保用户数据列数和训练数据一致
-    if user_data.shape[1] == 17:
+    if user_data.shape[1] == features.shape[1]:
         # 用户上传的数据用于预测
         X_user = user_data  # 17个特征
 
@@ -80,7 +73,7 @@ if uploaded_file is not None:
         result_df['Prediction'] = predictions
         st.write(result_df)
     else:
-        st.error("上传的CSV文件特征列数应为17列，请检查数据格式。")
+        st.error(f"上传的CSV文件特征列数应为{features.shape[1]}列，请检查数据格式。")
 
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
