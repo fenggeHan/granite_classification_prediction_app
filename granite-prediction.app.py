@@ -80,11 +80,12 @@ if uploaded_file is not None:
         result_df['Prediction'] = predictions
         st.write(result_df)
 
-        # 下载按钮，确保使用 utf-8-sig 编码避免乱码
+        # 下载结果（直接内存，不写文件）
+        output_csv = result_df.to_csv(index=False, encoding="utf-8-sig").encode("utf-8")  # 使用 utf-8-sig 编码
         st.download_button(
-            label="下载预测结果",
-            data=result_df.to_csv(index=False, encoding='utf-8-sig'),  # 设置正确的编码
-            file_name="predicted_results.csv",  # 结果文件名
+            label="Download prediction results",
+            data=output_csv,
+            file_name="prediction_results.csv",  # 文件名
             mime="text/csv"  # 文件类型
         )
     else:
