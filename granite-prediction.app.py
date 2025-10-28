@@ -67,8 +67,8 @@ if uploaded_file is not None:
     # 读取上传的CSV文件，并确保正确读取数据（第一行是列名）
     user_data = pd.read_csv(uploaded_file, header=0)  # 强制读取第一行作为列名
 
-    # 检查上传的数据列数是否匹配
-    if user_data.shape[1] == features.shape[1]:
+    # 检查上传的数据列数是否匹配（25列特征）
+    if user_data.shape[1] == 25:
         # 进行预测
         predictions = model.predict(user_data)
 
@@ -93,6 +93,6 @@ if uploaded_file is not None:
             mime="text/csv"  # 文件类型
         )
     else:
-        st.error(f"上传的CSV文件特征列数应为{features.shape[1]}列，请检查数据格式。")
+        st.error(f"上传的CSV文件特征列数应为25列，请检查数据格式。")
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
