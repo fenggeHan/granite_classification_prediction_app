@@ -67,7 +67,7 @@ if uploaded_file is not None:
     # 读取上传的CSV文件，并确保正确读取数据（第一行是列名）
     user_data = pd.read_csv(uploaded_file, header=0)  # 强制读取第一行作为列名
 
-    # 检查上传的数据列数是否匹配（需与训练时特征列数一致，这里假设模板是25列特征）
+    # 检查上传的数据列数是否匹配（25列特征）
     if user_data.shape[1] == 25:
         # 进行预测
         predictions = model.predict(user_data)
@@ -80,16 +80,16 @@ if uploaded_file is not None:
         result_df = user_data.copy()  # 保留用户上传的数据
         result_df.insert(25, 'Prediction', predictions)  # 在第26列插入预测结果
 
-        # 显示合并后的数据预览（与示例格式匹配）
+        # 显示合并后的数据
         st.write("合并后的数据预览：")
-        st.dataframe(result_df.head())  # 用dataframe更美观地显示
+        st.write(result_df.head())  # 显示前几行合并后的数据
 
         # 下载结果（直接内存，不写文件）
         output_csv = result_df.to_csv(index=False).encode("utf-8")  # 使用 utf-8 编码
         st.download_button(
-            label="Download prediction results",
+            label="Download prediction results",  # 按钮文本
             data=output_csv,  # 直接内存下载
-            file_name="prediction_results_with_data.csv",  # 文件名
+            file_name="prediction_results_with_data.csv",  # 下载的文件名
             mime="text/csv"  # 文件类型
         )
     else:
