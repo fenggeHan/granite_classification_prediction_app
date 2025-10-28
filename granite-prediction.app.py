@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import io  # 用于在内存中处理Excel文件
 
 # 页面标题
 st.title("Granite Prediction App")
@@ -79,17 +80,22 @@ if uploaded_file is not None:
         result_df = user_data.copy()  # 保留用户上传的数据
         result_df['Prediction'] = predictions  # 将预测结果直接插入为新的列（第26列）
 
-        # 显示合并后的数据（使用st.dataframe优化表格显示）
+        # 显示合并后的数据
         st.write("合并后的数据预览：")
-        st.dataframe(result_df)  # 用dataframe显示表格，支持更好的交互和样式
+        st.write(result_df)  # 显示合并后的数据
 
-        # 将预测结果保存为CSV文件并提供下载链接
-        csv = result_df.to_csv(index=False)  # 将结果DataFrame转为CSV格式
+        # 将预测结果保存为Excel文件并提供下载链接
+        excel_file = io.BytesIO()  # 在内存中创建一个字节流对象
+        with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+            result_df.to_excel(writer, index=False, sheet_name="Predictions")  # 将结果写入Excel文件
+        excel_file.seek(0)  # 重置文件指针到开头
+
+        # 生成下载按钮
         st.download_button(
-            label="点击下载包含预测结果的CSV文件",
-            data=csv,
-            file_name="predictions_with_results.csv",  # 用户下载的文件名
-            mime="text/csv"
+            label="点击下载包含预测结果的Excel文件",
+            data=excel_file,
+            file_name="predictions_with_results.xlsx",  # 用户下载的文件名
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
         
     else:
