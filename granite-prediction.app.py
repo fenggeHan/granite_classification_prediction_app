@@ -77,7 +77,7 @@ if uploaded_file is not None:
 
         # 将预测结果存放到一个 DataFrame 中，并插入到第26列
         result_df = user_data.copy()  # 保留用户上传的数据
-        result_df.insert(25, 'Prediction', predictions)  # 在第26列插入预测结果，索引位置为25（第26列）
+        result_df['Prediction'] = predictions  # 将预测结果直接插入为新的列（第26列）
 
         # 显示合并后的数据
         st.write("合并后的数据预览：")
