@@ -73,7 +73,7 @@ if uploaded_file is not None:
     # 确保用户数据列数和训练数据一致
     if user_data.shape[1] == features.shape[1]:
         # 用户上传的数据用于预测
-        X_user = user_data  # 25个特征
+        X_user = user_data  # 17个特征
 
         # 进行预测
         predictions = model.predict(X_user)
