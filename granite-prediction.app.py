@@ -13,7 +13,7 @@ st.title("Granite Prediction App")
 @st.cache_resource
 def load_data():
     # 读取数据，并确保第一行作为列名
-    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv)
+    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/1240shiyan.csv', header=0)
     return data
 
 data = load_data()
@@ -50,7 +50,7 @@ st.write(f"测试准确度: {test_accuracy:.4f}")
 uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
 
 # 显示模板下载链接
-st.markdown("如果你没有数据模板，请下载 [Data Template-granite.csv](https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/Data%20Template-granite.csv)")
+st.markdown("如果你没有数据模板，请下载 [Data Template-granite.csv](https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv)")
 
 if uploaded_file is not None:
     # 读取上传的CSV文件
@@ -77,6 +77,3 @@ if uploaded_file is not None:
 
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
-
-
-
