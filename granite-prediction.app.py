@@ -83,14 +83,15 @@ if uploaded_file is not None:
         st.write("合并后的数据预览：")
         st.write(result_df.head())  # 显示前几行合并后的数据
 
-        # 下载结果（直接内存，不写文件）
-        output_csv = result_df.to_csv(index=False).encode("utf-8")  # 使用 utf-8 编码
+        # 生成文件下载按钮
+        csv = result_df.to_csv(index=False)  # 转换为CSV格式
         st.download_button(
-            label="Download prediction results",  # 按钮文本
-            data=output_csv,  # 直接内存下载
-            file_name="prediction_results_with_data.csv",  # 下载的文件名
-            mime="text/csv"  # 文件类型
+            label="点击下载预测结果",
+            data=csv,
+            file_name="predictions_with_results.csv",
+            mime="text/csv"
         )
+        
     else:
         st.error(f"上传的CSV文件特征列数应为25列，请检查数据格式。")
 else:
