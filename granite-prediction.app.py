@@ -31,18 +31,15 @@ def load_data():
     data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv')
     return data
 
-data = load_data()
-
-# 提取特征和标签
-features = data.iloc[:, :-1]  # 特征: 所有列，去掉最后一列标签列
-labels = data.iloc[:, -1]  # 标签: 最后一列
-
-# 每次用户访问时重新训练模型
+# 训练并返回模型
 @st.cache_resource
-def train_model():
+def train_model(data):
+    features = data.iloc[:, :-1]  # 特征: 所有列，去掉最后一列标签列
+    labels = data.iloc[:, -1]  # 标签: 最后一列
+
     # 数据划分
     x_train, x_test, y_train, y_test = train_test_split(features, labels, test_size=0.2, stratify=labels, random_state=42)
-    
+
     # 创建并训练随机森林模型
     model = RandomForestClassifier(n_estimators=110, max_features=11, random_state=42, max_depth=10)
     model.fit(x_train, y_train)
@@ -55,8 +52,9 @@ def train_model():
     
     return model, train_accuracy, test_accuracy
 
-# 调用训练函数
-model, train_accuracy, test_accuracy = train_model()
+# 加载训练数据并训练模型
+data = load_data()
+model, train_accuracy, test_accuracy = train_model(data)
 
 # 显示训练和测试准确度
 st.write(f"训练准确度: {train_accuracy:.4f}")
