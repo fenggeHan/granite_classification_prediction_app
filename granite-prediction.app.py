@@ -87,10 +87,11 @@ if uploaded_file is not None:
         result_df['Prediction'] = predictions
         st.write(result_df)
 
-        # 生成预测结果下载按钮
+        # 生成预测结果下载按钮，确保用户下载的是正确的结果
+        csv_result = result_df.to_csv(index=False)  # 转换结果为 CSV 格式
         st.download_button(
             label="下载预测结果",
-            data=result_df.to_csv(index=False),  # 将结果数据转换为 CSV 格式
+            data=csv_result,  # 提供正确的 CSV 数据
             file_name="predicted_results.csv",  # 结果文件名
             mime="text/csv"  # 文件类型
         )
