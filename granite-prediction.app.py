@@ -50,19 +50,20 @@ st.write(f"测试准确度: {test_accuracy:.4f}")
 uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
 
 # 显示模板下载链接
-st.markdown(
-    "如果你没有数据模板，请点击下面的链接下载模板："
-)
-st.markdown(
-    "[下载 Data Template-granite.csv](https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv)"
-)
+st.markdown("如果你没有数据模板，请点击下面的按钮下载模板：")
 
-# 或者使用 Streamlit 的 download_button 直接提供下载链接
+# 使用 `st.download_button` 直接提供下载功能
+template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv'
+
+# 通过请求获取模板文件并提供下载
+template_data = pd.read_csv(template_url)
+
+# 使用下载按钮提供模板文件
 st.download_button(
     label="点击下载模板",
-    data=pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv').to_csv(index=False),
-    file_name="Data_Template-granite.csv",
-    mime="text/csv"
+    data=template_data.to_csv(index=False),  # 将模板数据转换为 CSV 格式
+    file_name="Data_Template-granite.csv",  # 文件名
+    mime="text/csv"  # 文件类型
 )
 
 if uploaded_file is not None:
