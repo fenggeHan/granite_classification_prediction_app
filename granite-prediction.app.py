@@ -9,6 +9,26 @@ import numpy as np
 # 页面标题
 st.title("Granite Prediction App")
 
+# 显示模板下载链接
+st.markdown("如果你没有数据模板，请点击下面的按钮下载模板：")
+
+# 使用 `st.download_button` 直接提供下载功能
+template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv'
+
+# 通过请求获取模板文件并提供下载
+template_data = pd.read_csv(template_url)
+
+# 使用下载按钮提供模板文件
+st.download_button(
+    label="点击下载模板",
+    data=template_data.to_csv(index=False),  # 将模板数据转换为 CSV 格式
+    file_name="Data_Template-granite.csv",  # 文件名
+    mime="text/csv"  # 文件类型
+)
+
+# 用户上传数据
+uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
+
 # 加载训练数据
 @st.cache_resource
 def load_data():
@@ -46,26 +66,6 @@ model, train_accuracy, test_accuracy = train_model()
 st.write(f"训练准确度: {train_accuracy:.4f}")
 st.write(f"测试准确度: {test_accuracy:.4f}")
 
-# 用户上传数据
-uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
-
-# 显示模板下载链接
-st.markdown("如果你没有数据模板，请点击下面的按钮下载模板：")
-
-# 使用 `st.download_button` 直接提供下载功能
-template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv'
-
-# 通过请求获取模板文件并提供下载
-template_data = pd.read_csv(template_url)
-
-# 使用下载按钮提供模板文件
-st.download_button(
-    label="点击下载模板",
-    data=template_data.to_csv(index=False),  # 将模板数据转换为 CSV 格式
-    file_name="Data_Template-granite.csv",  # 文件名
-    mime="text/csv"  # 文件类型
-)
-
 if uploaded_file is not None:
     # 读取上传的CSV文件
     user_data = pd.read_csv(uploaded_file, header=0)
@@ -86,6 +86,14 @@ if uploaded_file is not None:
         result_df = user_data.copy()
         result_df['Prediction'] = predictions
         st.write(result_df)
+
+        # 生成预测结果下载按钮
+        st.download_button(
+            label="下载预测结果",
+            data=result_df.to_csv(index=False),  # 将结果数据转换为 CSV 格式
+            file_name="predicted_results.csv",  # 结果文件名
+            mime="text/csv"  # 文件类型
+        )
     else:
         st.error(f"上传的CSV文件特征列数应为{features.shape[1]}列，请检查数据格式。")
 
