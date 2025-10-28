@@ -12,7 +12,7 @@ st.title("Granite Prediction App")
 # 加载训练数据
 @st.cache_resource
 def load_data():
-    data = pd.read_csv('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/1240shiyan.csv')
+    data = pd.read_csv('https://github.com/fenggeHan/granite_classification_prediction_app/blob/main/1240shiyan.csv')
     return data
 
 data = load_data()
@@ -76,3 +76,4 @@ if uploaded_file is not None:
 
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
+
