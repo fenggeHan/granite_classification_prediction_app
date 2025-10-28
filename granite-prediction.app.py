@@ -50,7 +50,7 @@ st.write(f"测试准确度: {test_accuracy:.4f}")
 uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
 
 # 显示模板下载链接
-st.markdown("如果你没有数据模板，请下载 [Data Template-granite.csv](https://github.com/fenggeHan/granite_classification_prediction_app/blob/main/Data%20Template-granite.csv)")
+st.markdown("如果你没有数据模板，请下载 [Data Template-granite.csv](https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/Data%20Template-granite.csv)")
 
 if uploaded_file is not None:
     # 读取上传的CSV文件
@@ -77,4 +77,5 @@ if uploaded_file is not None:
 
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
+
 
