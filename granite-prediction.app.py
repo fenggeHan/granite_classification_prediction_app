@@ -76,9 +76,9 @@ if uploaded_file is not None:
         st.write("预测结果:")
         st.write(predictions)
 
-        # 将预测结果存放到一个 DataFrame 中，并添加为最右侧一列
+        # 将预测结果存放到一个 DataFrame 中，并插入到第26列
         result_df = user_data.copy()  # 保留用户上传的数据
-        result_df['Prediction'] = predictions  # 在最右侧添加预测结果列
+        result_df.insert(25, 'Prediction', predictions)  # 在第26列插入预测结果
 
         # 显示合并后的数据
         st.write("合并后的数据预览：")
