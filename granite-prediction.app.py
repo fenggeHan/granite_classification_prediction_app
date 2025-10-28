@@ -72,12 +72,17 @@ if uploaded_file is not None:
         # 进行预测
         predictions = model.predict(user_data)
 
+        # 打印预测结果（网页上显示）
         st.write("预测结果:")
         st.write(predictions)
 
-        # 将预测结果添加到用户数据的最右边
-        result_df = user_data.copy()
-        result_df['Prediction'] = predictions
+        # 将预测结果（数组）存放到一个 DataFrame 中
+        result_df = pd.DataFrame(predictions, columns=["Prediction"])
+
+        # 将用户上传的原始数据与预测结果合并
+        result_df = pd.concat([user_data, result_df], axis=1)
+
+        # 显示合并后的数据
         st.write(result_df)
 
         # 下载结果（包括原始数据和预测结果）
