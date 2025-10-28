@@ -77,14 +77,14 @@ if uploaded_file is not None:
 
         # 将预测结果存放到一个 DataFrame 中，并插入到第26列
         result_df = user_data.copy()  # 保留用户上传的数据
-        result_df['Prediction'] = predictions  # 在最后一列插入预测结果，而不是用 insert()
+        result_df['Prediction'] = predictions  # 将预测结果添加为第26列
 
         # 显示合并后的数据
         st.write("合并后的数据预览：")
         st.write(result_df.head())  # 显示前几行合并后的数据
 
         # 下载结果（直接内存，不写文件）
-        output_csv = result_df.to_csv(index=False).encode("utf-8")  # 使用 utf-8 编码
+        output_csv = result_df.to_csv(index=True).encode("utf-8")  # 使用 utf-8 编码并保留索引
         st.download_button(
             label="Download prediction results",  # 按钮文本
             data=output_csv,  # 直接内存下载
