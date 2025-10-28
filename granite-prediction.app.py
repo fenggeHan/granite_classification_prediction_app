@@ -67,6 +67,10 @@ if uploaded_file is not None:
     # 读取上传的CSV文件
     user_data = pd.read_csv(uploaded_file)
     
+    # 确保用户上传的数据第一行是列名，并且数据格式正确
+    st.write("用户上传的数据预览：")
+    st.write(user_data.head())  # 显示前几行数据
+
     # 检查上传的数据列数是否匹配
     if user_data.shape[1] == features.shape[1]:
         # 进行预测
@@ -76,12 +80,13 @@ if uploaded_file is not None:
         st.write("预测结果:")
         st.write(predictions)
 
-        # 将预测结果（数组）存放到一个 DataFrame 中，并添加为最右侧一列
+        # 将预测结果存放到一个 DataFrame 中，并添加为最右侧一列
         result_df = user_data.copy()  # 保留用户上传的数据
         result_df['Prediction'] = predictions  # 在最右侧添加预测结果列
 
         # 显示合并后的数据
-        st.write(result_df)
+        st.write("合并后的数据预览：")
+        st.write(result_df.head())  # 显示前几行合并后的数据
 
         # 下载结果（包括原始数据和预测结果）
         output_csv = result_df.to_csv(index=False, encoding="utf-8-sig").encode("utf-8")  # 使用 utf-8-sig 编码
