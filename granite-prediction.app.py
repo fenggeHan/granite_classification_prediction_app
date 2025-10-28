@@ -75,17 +75,17 @@ if uploaded_file is not None:
         st.write("预测结果:")
         st.write(predictions)
 
-        # 将预测结果添加到用户数据
+        # 将预测结果添加到用户数据的最右边
         result_df = user_data.copy()
         result_df['Prediction'] = predictions
         st.write(result_df)
 
-        # 下载结果（直接内存，不写文件）
+        # 下载结果（包括原始数据和预测结果）
         output_csv = result_df.to_csv(index=False, encoding="utf-8-sig").encode("utf-8")  # 使用 utf-8-sig 编码
         st.download_button(
             label="Download prediction results",
             data=output_csv,
-            file_name="prediction_results.csv",  # 文件名
+            file_name="prediction_results_with_data.csv",  # 文件名
             mime="text/csv"  # 文件类型
         )
     else:
