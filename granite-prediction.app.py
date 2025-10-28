@@ -79,9 +79,9 @@ if uploaded_file is not None:
         result_df = user_data.copy()  # 保留用户上传的数据
         result_df['Prediction'] = predictions  # 将预测结果直接插入为新的列（第26列）
 
-        # 显示合并后的数据
+        # 显示合并后的数据（使用st.dataframe优化表格显示）
         st.write("合并后的数据预览：")
-        st.write(result_df)  # 显示合并后的数据
+        st.dataframe(result_df)  # 用dataframe显示表格，支持更好的交互和样式
 
         # 将预测结果保存为CSV文件并提供下载链接
         csv = result_df.to_csv(index=False)  # 将结果DataFrame转为CSV格式
