@@ -13,7 +13,7 @@ st.title("Granite Prediction App")
 st.markdown("如果你没有数据模板，请点击下面的按钮下载模板：")
 
 # 使用 `st.download_button` 直接提供下载功能
-template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/main/Data%20Template-granite.csv'
+template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv'
 
 # 通过请求获取模板文件并提供下载
 template_data = pd.read_csv(template_url)
@@ -99,3 +99,4 @@ if uploaded_file is not None:
 
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
+
