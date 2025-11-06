@@ -83,13 +83,20 @@ if uploaded_file is not None:
         user_data_transformed = user_data.copy()
         user_data_transformed.iloc[:, :-1] = np.log1p(user_data_transformed.iloc[:, :-1])  # 对数变换，避免零或负值
         
+        # 确保数据是数值型并且没有缺失值
+        user_data_transformed.iloc[:, :-1] = user_data_transformed.iloc[:, :-1].apply(pd.to_numeric, errors='coerce')
+        
+        # 删除缺失值
+        user_data_transformed.dropna(inplace=True)
+
         # 标准化处理：使用训练集的期望和方差对上传的数据进行标准化
         scaler = StandardScaler()
         scaler.mean_ = mean_values.values  # 使用训练数据的均值（转换为numpy数组）
         scaler.scale_ = std_values.values  # 使用训练数据的标准差（转换为numpy数组）
 
-        # 对上传的数据进行标准化（使用训练数据的期望和方差）
-        user_data_transformed.iloc[:, :-1] = scaler.transform(user_data_transformed.iloc[:, :-1].values)
+        # 确保标准化时数据的维度一致
+        user_data_features = user_data_transformed.iloc[:, :-1].values  # 提取特征部分
+        user_data_transformed.iloc[:, :-1] = scaler.transform(user_data_features)
 
         # 进行预测
         predictions = model.predict(user_data_transformed)
