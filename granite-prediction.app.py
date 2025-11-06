@@ -105,7 +105,8 @@ if uploaded_file is not None:
     else:
         st.error(f"The uploaded CSV file should contain 25 feature columns. Please check the data format.")
 else:
-    st.warning("Please upload a CSV file that matches the template to make predictions.")
+    st.warning("Please check your data and upload a CSV file that matches the template for prediction.")
+
 
 
 
