@@ -10,6 +10,8 @@ st.title("Application Program for Predicting Granite Genesis Types")
 st.write("This model uses apatite trace elements to predict the genesis types of granite, and the results are available for users to download!")
 st.write("Developer: Dr. Fengge Han; School of Science, East China University of Science and Technology, Nanchang, China")
 st.write("Email: hanfengge@ecut.edu.cn")
+st.markdown('---')
+    # return data
 
 # 加载训练数据
 @st.cache_resource
@@ -112,6 +114,7 @@ st.markdown('---')
 
 st.subheader("Citation")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
+
 
 
 
