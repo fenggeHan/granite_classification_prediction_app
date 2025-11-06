@@ -134,12 +134,13 @@ st.markdown(
     """
     <div style="text-align: center; padding: 20px; font-size: 16px; color: #4CAF50; 
                 text-shadow: 2px 2px 5px rgba(144, 238, 144, 0.6);">
-        🌟 **感谢您的访问，愿您的研究取得更大进展，前程似锦！** 🌟
+         🌟 **Thank you for visiting! May your research achieve greater success and a bright future!** 🌟
         <br>
-        🌟 **Thank you for visiting! May your research achieve greater success and a bright future!** 🌟
+               🌟 **感谢您的访问，愿您的研究取得更大进展，前程似锦！** 🌟
     </div>
     """, unsafe_allow_html=True
 )
+
 
 
 
