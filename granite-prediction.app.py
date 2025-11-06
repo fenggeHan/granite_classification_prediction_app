@@ -61,9 +61,9 @@ st.download_button(
     file_name="Data_Template-granite.csv",
     mime="text/csv"
 )
-st.success("Template download completed!")  # 模版下载完成提示
+st.info("Template download completed!")  # 模版下载完成提示
 # 步骤 2：用户上传数据
-st.info("Step 2: Please nUpload Your Data for Prediction")
+st.subheader("Step 2: Please nUpload Your Data for Prediction")
 uploaded_file = st.file_uploader("Please upload a CSV file that matches the download template", type="csv")
 
 # 如果上传了文件
@@ -106,6 +106,7 @@ if uploaded_file is not None:
         st.error(f"The uploaded CSV file should contain 25 feature columns. Please check the data format.")
 else:
     st.info("Please upload a CSV file that matches the template to make predictions.")
+
 
 
 
