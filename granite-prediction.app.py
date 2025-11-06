@@ -49,6 +49,7 @@ st.write("The model is being trained on the provided dataset. Please wait...")
 st.write(f"Training accuracy: {train_accuracy:.4f}")
 st.write(f"Testing accuracy: {test_accuracy:.4f}")
 st.success("Model training completed")  # 模型训练完成提示
+st.markdown('---')
 
 # 步骤 1：显示模板下载链接
 st.subheader("Step 1: Download Data Template (if needed)")
@@ -65,6 +66,8 @@ st.download_button(
     mime="text/csv"
 )
 st.success("Template download completed!")  # 模版下载完成提示
+st.markdown('---')
+
 # 步骤 2：用户上传数据
 st.subheader("Step 2: Please npload Your Data for Prediction")
 uploaded_file = st.file_uploader("Please upload a CSV file that matches the download template", type="csv")
@@ -114,6 +117,7 @@ st.markdown('---')
 
 st.subheader("Citation")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
+
 
 
 
