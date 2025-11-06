@@ -135,10 +135,10 @@ if uploaded_file is not None:
         
 else:
     st.warning("Please check your data and upload a CSV file that matches the template for prediction.\n 请检查您的数据，并上传一个与预测模板匹配的CSV文件。")
-# 插入绿色波浪线
+# 插入黄色波浪线
 st.markdown(
     """
-    <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    <hr style="border: 0; border-top: 2px dashed yellow; width: 100%; height: 1px;">
     """, unsafe_allow_html=True
 )
 
@@ -162,6 +162,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
