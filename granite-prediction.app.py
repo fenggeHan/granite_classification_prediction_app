@@ -9,9 +9,6 @@ import io  # 用于在内存中处理Excel文件
 st.title("Application Program for Predicting Granite Genesis Types")
 st.write("This model uses apatite trace elements to predict the genesis types of granite, and the results are available for users to download!")
 
-# 步骤 1：训练模型
-st.subheader("Step 1: Training the Model")
-st.write("The model is being trained on the provided dataset. Please wait...")
 
 # 加载训练数据
 @st.cache_resource
@@ -45,12 +42,13 @@ data = load_data()
 model, train_accuracy, test_accuracy = train_model(data)
 
 # 显示训练和测试准确度
-st.success("Model training completed")  # 模型训练完成提示
+st.write("The model is being trained on the provided dataset. Please wait...")
 st.write(f"Training accuracy: {train_accuracy:.4f}")
 st.write(f"Testing accuracy: {test_accuracy:.4f}")
+st.success("Model training completed")  # 模型训练完成提示
 
-# 步骤 2：显示模板下载链接
-st.subheader("Step 2: Download Data Template (if needed)")
+# 步骤 1：显示模板下载链接
+st.subheader("Step 1: Download Data Template (if needed)")
 st.markdown("If you do not have a data template, please click the button below to download the template:")
 
 # 直接提供模板文件下载链接
@@ -63,9 +61,9 @@ st.download_button(
     file_name="Data_Template-granite.csv",
     mime="text/csv"
 )
-
-# 步骤 3：用户上传数据
-st.subheader("Step 3: Upload Your Data for Prediction")
+st.success("Template download completed!")  # 模版下载完成提示
+# 步骤 2：用户上传数据
+st.subheader("Step 2: Please nUpload Your Data for Prediction")
 uploaded_file = st.file_uploader("Upload a CSV file with the required template", type="csv")
 
 # 如果上传了文件
@@ -108,3 +106,4 @@ if uploaded_file is not None:
         st.error(f"The uploaded CSV file should contain 25 feature columns. Please check the data format.")
 else:
     st.info("Please upload a CSV file that matches the template to make predictions.")
+
