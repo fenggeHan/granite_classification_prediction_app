@@ -113,7 +113,7 @@ if uploaded_file is not None:
                                  data=excel_file,
             file_name="predictions_with_results.xlsx",  # 用户下载的文件名
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        #)
+        )
         
     else:
         st.error(f"The uploaded CSV file should contain 25 feature columns. Please check the data format.")
@@ -127,6 +127,7 @@ st.markdown('---')
 st.subheader("Citation（引用）")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
 st.write("* 韩凤歌, 冷成彪, 陈加杰, 邹少浩,王大钊. 2025. 基于磷灰石微量元素组成的机器学习方法判别花岗岩成因类型. 岩石学报, 41(02): 737-750. doi: 10. 18654/1000-0569/")
+
 
 
 
