@@ -109,13 +109,10 @@ else:
 st.markdown('---')
     # return data
 
-st.markdown("""
-        #### Citation
-        """, 
-        unsafe_allow_html=True)
-    st.markdown("""
-                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine-Learning Oxybarometer Developed Using Zircon Trace-element Chemistry and Its Applications.American Mineralogist. (In press) https://doi.org/10.2138/am-2023-8978.
-                """)
+st.subheader("Citation")
+st.write("* Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine-Learning Oxybarometer Developed Using Zircon Trace-element Chemistry and Its Applications.American Mineralogist. (In press) https://doi.org/10.2138/am-2023-8978.")
+
+
 
 
 
