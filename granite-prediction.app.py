@@ -110,7 +110,8 @@ st.markdown('---')
     # return data
 
 st.subheader("Citation")
-st.write("* Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine-Learning Oxybarometer Developed Using Zircon Trace-element Chemistry and Its Applications.American Mineralogist. (In press) https://doi.org/10.2138/am-2023-8978.")
+st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
+
 
 
 
