@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
+import numpy as np
 import io  # 用于在内存中处理Excel文件
 
 # 页面标题
@@ -25,12 +27,21 @@ st.download_button(
 # 用户上传数据
 uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="csv")
 
-# 加载训练数据
+# 加载训练数据并预处理
 @st.cache_resource
 def load_data():
-    #data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv')
     data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan%20-%20o.csv')
-    return data
+    
+    # 数据预处理：对数变换（避免负值）
+    data_transformed = data.copy()
+    data_transformed.iloc[:, :-1] = np.log1p(data_transformed.iloc[:, :-1])  # 对数变换，避免零或负值
+    
+    # 计算期望（均值）和方差
+    mean_values = data_transformed.iloc[:, :-1].mean()
+    std_values = data_transformed.iloc[:, :-1].std()
+
+    # 返回预处理后的数据以及期望和方差
+    return data_transformed, mean_values, std_values
 
 # 训练并返回模型
 @st.cache_resource
@@ -54,7 +65,7 @@ def train_model(data):
     return model, train_accuracy, test_accuracy
 
 # 加载训练数据并训练模型
-data = load_data()
+data, mean_values, std_values = load_data()
 model, train_accuracy, test_accuracy = train_model(data)
 
 # 显示训练和测试准确度
@@ -68,8 +79,16 @@ if uploaded_file is not None:
 
     # 检查上传的数据列数是否匹配（25列特征）
     if user_data.shape[1] == 25:
+        # 对上传的数据进行预处理：对数变换
+        user_data_transformed = user_data.copy()
+        user_data_transformed.iloc[:, :-1] = np.log1p(user_data_transformed.iloc[:, :-1])  # 对数变换，避免零或负值
+        
+        # 标准化处理：使用训练集的期望和方差对上传的数据进行标准化
+        scaler = StandardScaler()
+        user_data_transformed.iloc[:, :-1] = scaler.fit_transform(user_data_transformed.iloc[:, :-1], mean_values, std_values)
+
         # 进行预测
-        predictions = model.predict(user_data)
+        predictions = model.predict(user_data_transformed)
 
         # 打印预测结果（网页上显示）
         st.write("预测结果:")
@@ -101,5 +120,3 @@ if uploaded_file is not None:
         st.error(f"上传的CSV文件特征列数应为25列，请检查数据格式。")
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
-
-
