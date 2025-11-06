@@ -11,7 +11,7 @@ st.title("花岗岩成因类型预测应用程序")
 st.write("This model uses apatite trace elements to predict the genesis types of granite, and the results are available for users to download!")
 st.write("该模型使用磷灰石微量元素预测花岗岩的成因类型，结果可供用户下载！")
 st.write("Developer: Dr. Fengge Han; School of Sciences, East China University of Technology; School of Earth and Planetary Sciences, East China University of Technology, Nanchang, China")
-st.write("开发人员：韩风歌（博士）；东华理工大学理学院;东华理工大学地球与行星科学学院，南昌，中国")
+st.write("开发人员：韩凤歌（博士）；东华理工大学理学院;东华理工大学地球与行星科学学院，南昌，中国")
 st.write("Email: hanfengge@ecut.edu.cn")
 st.markdown('---')
     # return data
@@ -66,16 +66,17 @@ template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classificati
 
 # 生成模板下载按钮
 st.download_button(
-    label="Click to download the template",
+    label="Click to download the template（单击此处下载模板）",
     data=pd.read_csv(template_url).to_csv(index=False),  # 直接读取并转换为CSV格式
     file_name="Data_Template-granite.csv",
     mime="text/csv"
 )
-st.success("Template download completed!")  # 模版下载完成提示
+st.success("Template download completed!（模板下载完成！）")  # 模版下载完成提示
 st.markdown('---')
 
 # 步骤 2：用户上传数据
 st.subheader("Step 2: Please upload Your Data for Prediction")
+st.subheader("第二步：请您上传您的数据用于预测")
 uploaded_file = st.file_uploader("Please upload a CSV file that matches the download template", type="csv")
 
 # 如果上传了文件
@@ -123,6 +124,7 @@ st.markdown('---')
 
 st.subheader("Citation")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
+
 
 
 
