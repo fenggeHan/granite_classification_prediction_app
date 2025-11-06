@@ -85,7 +85,11 @@ if uploaded_file is not None:
         
         # 标准化处理：使用训练集的期望和方差对上传的数据进行标准化
         scaler = StandardScaler()
-        user_data_transformed.iloc[:, :-1] = scaler.fit_transform(user_data_transformed.iloc[:, :-1], mean_values, std_values)
+        scaler.mean_ = mean_values  # 设置训练数据的均值
+        scaler.scale_ = std_values  # 设置训练数据的标准差
+
+        # 对上传的数据进行标准化（使用训练数据的期望和方差）
+        user_data_transformed.iloc[:, :-1] = scaler.transform(user_data_transformed.iloc[:, :-1])
 
         # 进行预测
         predictions = model.predict(user_data_transformed)
