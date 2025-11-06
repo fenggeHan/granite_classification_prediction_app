@@ -7,8 +7,11 @@ import io  # 用于在内存中处理Excel文件
 
 # 页面标题
 st.title("Application Program for Predicting Granite Genesis Types")
+st.title("花岗岩成因类型预测应用程序")
 st.write("This model uses apatite trace elements to predict the genesis types of granite, and the results are available for users to download!")
-st.write("Developer: Dr. Fengge Han; School of Science, East China University of Science and Technology, Nanchang, China")
+st.write("该模型使用磷灰石微量元素预测花岗岩的成因类型，结果可供用户下载！")
+st.write("Developer: Dr. Fengge Han; School of Sciences, East China University of Technology; School of Earth and Planetary Sciences, East China University of Technology, Nanchang, China")
+st.write("开发人员：韩风歌（博士）；东华理工大学理学院;东华理工大学地球与行星科学学院，南昌，中国")
 st.write("Email: hanfengge@ecut.edu.cn")
 st.markdown('---')
     # return data
@@ -46,14 +49,17 @@ model, train_accuracy, test_accuracy = train_model(data)
 
 # 显示训练和测试准确度
 st.write("The model is being trained on the provided dataset. Please wait...")
-st.write(f"Training accuracy: {train_accuracy:.4f}")
-st.write(f"Testing accuracy: {test_accuracy:.4f}")
-st.success("Model training completed")  # 模型训练完成提示
+st.write("模型训练中，请稍等……")
+st.write(f"Training accuracy（训练精确度）: {train_accuracy:.4f}")
+st.write(f"Testing accuracy（测试精确度）: {test_accuracy:.4f}")
+st.success("Model training completed（模型训练已完成）")  # 模型训练完成提示
 st.markdown('---')
 
 # 步骤 1：显示模板下载链接
 st.subheader("Step 1: Download Data Template (if needed)")
+st.subheader("第一步：请下载数据模板（如果需要）")
 st.markdown("If you do not have a data template, please click the button below to download the template:")
+st.markdown("如果您没有数据模板，请单击下面的按钮下载模板：")
 
 # 直接提供模板文件下载链接
 template_url = 'https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/Data%20Template-granite.csv'
@@ -69,7 +75,7 @@ st.success("Template download completed!")  # 模版下载完成提示
 st.markdown('---')
 
 # 步骤 2：用户上传数据
-st.subheader("Step 2: Please npload Your Data for Prediction")
+st.subheader("Step 2: Please upload Your Data for Prediction")
 uploaded_file = st.file_uploader("Please upload a CSV file that matches the download template", type="csv")
 
 # 如果上传了文件
@@ -117,6 +123,7 @@ st.markdown('---')
 
 st.subheader("Citation")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
+
 
 
 
