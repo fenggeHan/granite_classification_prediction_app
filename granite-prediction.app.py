@@ -13,8 +13,12 @@ st.write("该模型使用磷灰石微量元素预测花岗岩的成因类型，�
 st.write("Developer: Dr. Fengge Han; School of Sciences, East China University of Technology; School of Earth and Planetary Sciences, East China University of Technology, Nanchang, China")
 st.write("开发人员：韩凤歌（博士）；东华理工大学理学院;东华理工大学地球与行星科学学院，南昌，中国")
 st.write("Email: hanfengge@ecut.edu.cn")
-st.markdown('---')
-    # return data
+# 插入蓝色波浪线
+st.markdown(
+    """
+    <hr style="border: 0; border-top: 2px solid blue; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    """, unsafe_allow_html=True
+)
 
 # 加载训练数据
 @st.cache_resource
@@ -53,7 +57,12 @@ st.write("模型训练中，请稍等……")
 st.write(f"Training accuracy（训练精确度）: {train_accuracy:.4f}")
 st.write(f"Testing accuracy（测试精确度）: {test_accuracy:.4f}")
 st.success("Model training completed（模型训练已完成）")  # 模型训练完成提示
-st.markdown('---')
+# 插入绿色波浪线
+st.markdown(
+    """
+    <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    """, unsafe_allow_html=True
+)
 
 # 步骤 1：显示模板下载链接
 st.subheader("Step 1: Download Data Template (if needed)")
@@ -72,7 +81,12 @@ st.download_button(
     mime="text/csv"
 )
 st.success("Template download completed!（模板下载完成！）")  # 模版下载完成提示
-st.markdown('---')
+# 插入绿色波浪线
+st.markdown(
+    """
+    <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    """, unsafe_allow_html=True
+)
 
 # 步骤 2：用户上传数据
 st.subheader("Step 2: Please upload Your Data for Prediction")
@@ -148,6 +162,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
