@@ -111,8 +111,7 @@ if uploaded_file is not None:
 
         # 生成下载按钮
         st.download_button(
-            label="Click to download the prediction results in Excel file",
-            st.warning("点击下载Excel文件中的预测结果")
+            label="Click to download the prediction results in Excel file（点击下载Excel文件中的预测结果）",
                       data=excel_file,
             file_name="predictions_with_results.xlsx",  # 用户下载的文件名
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -131,6 +130,7 @@ st.markdown('---')
 st.subheader("Citation（引用）")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
 st.write("* 韩凤歌, 冷成彪, 陈加杰, 邹少浩,王大钊. 2025. 基于磷灰石微量元素组成的机器学习方法判别花岗岩成因类型. 岩石学报, 41(02): 737-750. doi: 10. 18654/1000-0569/")
+
 
 
 
