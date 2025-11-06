@@ -106,6 +106,16 @@ if uploaded_file is not None:
         st.error(f"The uploaded CSV file should contain 25 feature columns. Please check the data format.")
 else:
     st.warning("Please check your data and upload a CSV file that matches the template for prediction.")
+st.markdown('---')
+    # return data
+
+st.markdown("""
+        #### Citation
+        """, 
+        unsafe_allow_html=True)
+    st.markdown("""
+                * Zou, S., Brzozowski, M.J., Chen X., Xu, D. Machine-Learning Oxybarometer Developed Using Zircon Trace-element Chemistry and Its Applications.American Mineralogist. (In press) https://doi.org/10.2138/am-2023-8978.
+                """)
 
 
 
