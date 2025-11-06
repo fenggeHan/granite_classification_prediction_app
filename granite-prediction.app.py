@@ -121,8 +121,12 @@ if uploaded_file is not None:
         
 else:
     st.warning("Please check your data and upload a CSV file that matches the template for prediction.\n 请检查您的数据，并上传一个与预测模板匹配的CSV文件。")
-st.markdown('---')
-    # return data
+# 插入绿色波浪线
+st.markdown(
+    """
+    <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    """, unsafe_allow_html=True
+)
 
 st.subheader("Citation（引用）")
 st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lerarning method for discriminating granite genetic types based on trace element composition of apatite. Acta Petrologica Sinica, 41 (02), 737-750. (in Chinese with English abstract). doi: 10. 18654/1000-0569/")
@@ -144,6 +148,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
