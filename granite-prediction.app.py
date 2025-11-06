@@ -129,19 +129,21 @@ st.write("* Han, F., Leng, C., Chen, J., Zou, S. & Wang, D. (2025). Machine lera
 st.write("* 韩凤歌, 冷成彪, 陈加杰, 邹少浩,王大钊. 2025. 基于磷灰石微量元素组成的机器学习方法判别花岗岩成因类型. 岩石学报, 41(02): 737-750. doi: 10. 18654/1000-0569/")
 
 
-
 st.markdown(
     """
-    <div style="text-align: center; padding: 20px; font-size: 16px; color: #4CAF50; 
-                text-shadow: 2px 2px 5px rgba(144, 238, 144, 0.6);">
-         🌟 **Thank you for visiting! May your research achieve greater success and a bright future!** 🌟
+    <div style="text-align: center; padding: 20px; font-size: 16px; color: #4CAF50;">
+        🌟 **Thank you for visiting! May your research achieve greater success and a bright future!** 🌟
         <br>
-               🌟 **感谢您的访问，愿您的研究取得更大进展，前程似锦！** 🌟
+        🌟 **感谢您的访问，愿您的研究取得更大进展，前程似锦！** 🌟
     </div>
     """, unsafe_allow_html=True
 )
-
-
+# 插入绿色波浪线
+st.markdown(
+    """
+    <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
+    """, unsafe_allow_html=True
+)
 
 
 
