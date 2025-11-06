@@ -66,7 +66,7 @@ st.markdown(
 
 # 步骤 1：显示模板下载链接
 st.subheader("Step 2: Download Data Template (if needed)")
-st.subheader("第一步：请下载数据模板（如果需要）")
+st.subheader("第二步：请下载数据模板（如果需要）")
 st.markdown("If you do not have a data template, please click the button below to download the template:")
 st.markdown("如果您没有数据模板，请单击下面的按钮下载模板：")
 
@@ -90,7 +90,7 @@ st.markdown(
 
 # 步骤 2：用户上传数据
 st.subheader("Step 3: Please upload Your Data for Prediction")
-st.subheader("第二步：请您上传您的数据用于预测")
+st.subheader("第三步：请您上传您的数据用于预测")
 uploaded_file = st.file_uploader("Please upload a CSV file that matches the download template（请上传与下载模板匹配的CSV文件）", type="csv")
 
 # 如果上传了文件
@@ -162,6 +162,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
