@@ -28,8 +28,8 @@ uploaded_file = st.file_uploader("上传符合模板的数据CSV文件", type="c
 # 加载训练数据
 @st.cache_resource
 def load_data():
-    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv')
-    #data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan%20-%20o.csv')
+    #data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan.csv')
+    data = pd.read_csv('https://raw.githubusercontent.com/fenggeHan/granite_classification_prediction_app/refs/heads/main/1240shiyan%20-%20o.csv')
     return data
 
 # 训练并返回模型
@@ -101,6 +101,7 @@ if uploaded_file is not None:
         st.error(f"上传的CSV文件特征列数应为25列，请检查数据格式。")
 else:
     st.info("请上传一个符合模板的CSV文件进行预测。")
+
 
 
 
