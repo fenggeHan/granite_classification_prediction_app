@@ -122,18 +122,7 @@ if uploaded_file is not None:
         excel_file.seek(0)  # 重置文件指针到开头
 
 
-        st.markdown("""
-            <style>
-            div.stDownloadButton > button:first-child {
-                background-color: #b6eeb6;  /* 浅绿色 */
-                color: black;                /* 字体颜色 */
-            }
-            div.stDownloadButton > button:first-child:hover {
-                background-color: #a1e0a1;  /* 悬停时稍深的浅绿色 */
-                color: black;
-            }
-            </style>
-        """, unsafe_allow_html=True)
+       
         # 生成下载按钮
         st.download_button(
             label="Click to download the prediction results in Excel file（点击下载Excel文件中的预测结果）",
@@ -175,6 +164,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
