@@ -124,11 +124,11 @@ if uploaded_file is not None:
         st.markdown("""
             <style>
             div.stDownloadButton > button:first-child {
-                background-color: #b6eeb6;  /* 浅绿色 */
+                background-color: #FFF9B1;  /* 浅黄色 */
                 color: black;                /* 字体颜色 */
             }
             div.stDownloadButton > button:first-child:hover {
-                background-color: #a1e0a1;  /* 悬停时稍深的浅绿色 */
+                background-color: #FFFFA5;  /* 悬停时稍深的浅黄色 */
                 color: black;
             }
             </style>
@@ -175,6 +175,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
