@@ -123,7 +123,7 @@ if uploaded_file is not None:
 
         # 生成下载按钮
         st.download_button(
-            label="Click to download the prediction results in Excel file（点击下载Excel文件中的预测结果）",
+            st.success"Click to download the prediction results in Excel file（点击下载Excel文件中的预测结果）",
                                  data=excel_file,
             file_name="predictions_with_results.xlsx",  # 用户下载的文件名
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -162,6 +162,7 @@ st.markdown(
     <hr style="border: 0; border-top: 2px solid green; width: 100%; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Wave_pattern.svg'); height: 10px;">
     """, unsafe_allow_html=True
 )
+
 
 
 
